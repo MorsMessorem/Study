@@ -1,0 +1,7 @@
+C:\Users\Slava\source\repos\Tafya\Tafya\bin\Debug\Tafya.exe.config
+C:\Users\Slava\source\repos\Tafya\Tafya\bin\Debug\Tafya.exe
+C:\Users\Slava\source\repos\Tafya\Tafya\bin\Debug\Tafya.pdb
+C:\Users\Slava\source\repos\Tafya\Tafya\obj\Debug\Tafya.csprojAssemblyReference.cache
+C:\Users\Slava\source\repos\Tafya\Tafya\obj\Debug\Tafya.csproj.CoreCompileInputs.cache
+C:\Users\Slava\source\repos\Tafya\Tafya\obj\Debug\Tafya.exe
+C:\Users\Slava\source\repos\Tafya\Tafya\obj\Debug\Tafya.pdb

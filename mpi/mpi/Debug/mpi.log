@@ -1,0 +1,7 @@
+﻿  mpi.cpp
+C:\Users\Slava\source\repos\mpi\mpi\mpi.cpp(108,25): warning C4101: RecvRank: неиспользованная локальная переменная
+  Source.cpp
+  Создание кода...
+LINK : warning LNK4075: не учитывается "/INCREMENTAL" из-за спецификации "/PROFILE"
+mpi.obj : warning LNK4075: не учитывается "/EDITANDCONTINUE" из-за спецификации "/OPT:REF"
+  mpi.vcxproj -> C:\Users\Slava\source\repos\mpi\Debug\mpi.exe

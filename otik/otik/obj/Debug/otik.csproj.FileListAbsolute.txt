@@ -1,0 +1,7 @@
+C:\Users\Slava\source\repos\otik\otik\bin\Debug\otik.exe.config
+C:\Users\Slava\source\repos\otik\otik\bin\Debug\otik.exe
+C:\Users\Slava\source\repos\otik\otik\bin\Debug\otik.pdb
+C:\Users\Slava\source\repos\otik\otik\obj\Debug\otik.csprojAssemblyReference.cache
+C:\Users\Slava\source\repos\otik\otik\obj\Debug\otik.csproj.CoreCompileInputs.cache
+C:\Users\Slava\source\repos\otik\otik\obj\Debug\otik.exe
+C:\Users\Slava\source\repos\otik\otik\obj\Debug\otik.pdb
