@@ -9,7 +9,7 @@
 #include <math.h>
 using namespace std;
 
-bool finish_flag=false;
+bool finish_flag[2]={false,false};
 int num_count=2;
 //length of answer
 size_t len=1;
@@ -30,10 +30,10 @@ static void child_cb (EV_P_ ev_child *w, int revents)
 {
 	ev_child_stop (EV_A_ w);
 	//printf ("process %d exited with status %x\n", w->rpid, w->rstatus);
-	if (!finish_flag)
+	finish_flag[1]=true;
+	if (!finish_flag[0])
 	{
 	printf("child done faster\n");
-	finish_flag=true;
 	}
 	printf("result of child's calculations: ");
 	//get answer
@@ -176,7 +176,7 @@ else if (pid == 0)
 	r[d - 1][d - 1] = 1;
 	// | Interpolation
 	r = matrix(r, d);
-	cout << endl;
+	//cout << endl;
 	// | Rearrangement
 	int64_t* res = new int64_t[d];
 	for (int i = 0; i < d; i++)
@@ -195,7 +195,7 @@ else if (pid == 0)
 	{
 		sres[i + 1] = sum(sres[i], sres[i + 1], i + 1, B);
 	}
-	cout << endl;
+	//cout << endl;
 	//cout <<"res: " << sres[d - 1] << endl;
 	char* char_arr;
     	char_arr = &sres[d-1][0];
@@ -266,14 +266,18 @@ else
 	string result = "";
 	for (int i = 0; i < pow_count; i++)
 	result = to_string(res[i]) + result;
-	if (!finish_flag)
+	finish_flag[0]=true;
+	if (!finish_flag[1])
 	{
 		printf("parent done faster\n");
-		finish_flag=true;
 	}	
 	cout << "result of parent's calculations: "<< result<<endl;	
 }
-ev_timer_stop(loop,&timeout_watcher);
+while(!(finish_flag[0]||finish_flag[1]))
+{
+}
+ev_timer_stop(loop, &timeout_watcher);
+cout<<"\tno timeout\n";
 ev_run (loop, 0);
 return 0;
 }
