@@ -60,7 +60,7 @@ int main()
 	int n = 10000;
 	for (int i = 0; i < n; i++)
 	{
-		list->add(2);
+		list->add(rand()%10);
 	}
 	if (print_list)
 	{
