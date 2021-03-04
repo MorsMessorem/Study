@@ -1,18 +1,25 @@
-#include <iostream>
+#define false 0
+#define true 1
 #include <stdio.h> 
 #include <time.h>
 #include <pthread.h>
-#include "list.cpp"
-using namespace std;
+#include "list.h"
+
+Node* find(int pos, List *list);
+void addelem(int number, int pos, List *list);
+void removeelem(int pos, List *list);
+void print();
+List* createlist();
+void deletelist(List **list);
 
 int res[2][2] = { {0,0},{0,0} };
 pthread_mutex_t mutex;
-class Args
+typedef struct _Args
 {
-public:
 	int bit;
 	List* list;
-};
+} Args;
+
 int countBits(int bit, int number)
 {
 	int count = 0;
@@ -41,7 +48,7 @@ void* threadBits(void* args)
 					break;
 					}
 				count += countBits(arg->bit, start->number);
-				arg->list->remove((arg->bit) ? arg->list->size - 1 : 0);
+				removeelem(((arg->bit) ? arg->list->size - 1 : 0),arg->list);
 			pthread_mutex_unlock(&mutex);
 			start = (arg->bit) ? arg->list->end : arg->list->start;
 			i++;
@@ -52,19 +59,19 @@ void* threadBits(void* args)
 	return 0;
 }
 
-int main()
+int main(void)
 {
-	bool print_list = false;
+	int print_list = true;
 	srand(time(NULL));
-	class List *list = (List*)malloc(sizeof(List));		list = list->createlist();
+	List *list = (List*)malloc(sizeof(List));		list = createlist();
 	int n = 10000;
 	for (int i = 0; i < n; i++)
 	{
-		list->add(rand()%10);
+		addelem(rand()%10,0,list);
 	}
 	if (print_list)
 	{
-		list->print();
+		print(list);
 	}
 	pthread_t threads[2];
 	Args args[2];
@@ -74,6 +81,7 @@ int main()
 
 		args[i].list = list;
 		args[i].bit = i;
+		
 		if (pthread_create(&threads[i], NULL, threadBits, (void*)&args[i])) {
 			printf("Error: pthread_create failed!\n");
 			return 1;
