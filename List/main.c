@@ -5,13 +5,6 @@
 #include <pthread.h>
 #include "list.h"
 
-Node* find(int pos, List *list);
-void addelem(int number, int pos, List *list);
-void removeelem(int pos, List *list);
-void print();
-List* createlist();
-void deletelist(List **list);
-
 int res[2][2] = { {0,0},{0,0} };
 pthread_mutex_t mutex;
 typedef struct _Args
@@ -61,7 +54,7 @@ void* threadBits(void* args)
 
 int main(void)
 {
-	int print_list = true;
+	int print_list = false;
 	srand(time(NULL));
 	List *list = (List*)malloc(sizeof(List));		list = createlist();
 	int n = 10000;
