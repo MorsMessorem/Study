@@ -16,7 +16,6 @@ typedef struct _Args
 int countBits(int bit, int number)
 {
 	unsigned int num = number;
-	if  (number < 0) num--;
 	int count = 0;
 	do
 	{
