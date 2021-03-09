@@ -1,4 +1,4 @@
-#define false 0
+ #define false 0
 #define true 1
 #include <stdio.h> 
 #include <time.h>
@@ -15,13 +15,16 @@ typedef struct _Args
 
 int countBits(int bit, int number)
 {
+	unsigned int num = number;
+	if  (number < 0) num--;
 	int count = 0;
 	do
 	{
-		if ((number & 1) == bit)
+		if ((num & 1) == bit)
 			count++;
-		number >>= 1;
-	} while (number != 0);
+		num >>= 1;
+	} while (num != 0);
+	//printf("%d %d\n",number,count);
 	return count;
 }
 
@@ -60,7 +63,7 @@ int main(void)
 	int n = 10000;
 	for (int i = 0; i < n; i++)
 	{
-		addelem(rand()%10,0,list);
+		addelem(rand()%20-10+1,0,list);
 	}
 	if (print_list)
 	{
