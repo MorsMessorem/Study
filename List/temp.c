@@ -34,25 +34,19 @@ void* threadBits(void* args)
 	start = (arg->bit) ? arg->list->end : arg->list->start;
 	int i = 0;
 	int count = 0;
-	int count_temp = 0;
 	while (true)
 	{
-			count_temp = countBits(arg->bit, start->number);
 			pthread_mutex_lock(&mutex);
 				if (arg->list->size==0)
 					{
 					pthread_mutex_unlock(&mutex);
 					break;
 					}
+				count += countBits(arg->bit, start->number);
 				removeelem(((arg->bit) ? arg->list->size - 1 : 0),arg->list);
 			pthread_mutex_unlock(&mutex);
-			count += count_temp;
-			i++;
-			if (arg->list->size==0)
-				{
-				break;
-				}
 			start = (arg->bit) ? arg->list->end : arg->list->start;
+			i++;
 	}
 	//pthread_mutex_lock(&mutex);
 	res[arg->bit][0] = count; res[arg->bit][1] = i;
@@ -68,7 +62,7 @@ int main(void)
 	int n = 1e4;
 	for (int i = 0; i < n; i++)
 	{
-		//addelem(2,0,list);	
+		//addelem(2,0,list);
 		addelem(rand()%20-10+1,0,list);
 	}
 	if (print_list)
